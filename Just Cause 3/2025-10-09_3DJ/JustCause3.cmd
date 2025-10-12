@@ -1,0 +1,1 @@
+JustCause3.exe --vfs-fs dropzone --vfs-archive patch_win64 --vfs-archive archives_win64 --vfs-fs
