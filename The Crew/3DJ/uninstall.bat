@@ -127,4 +127,8 @@ rmdir /s /q DMAutoPatchFailures
 rmdir /s /q ShaderCacheDM
 rmdir /s /q ShaderFixesDM
 
+del ReadMe.txt
+del geo-11.txt
+del Source.url
+
 del uninstall.bat
