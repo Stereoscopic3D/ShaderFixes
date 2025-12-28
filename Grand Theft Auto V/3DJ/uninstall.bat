@@ -131,6 +131,6 @@ del ReadMe.txt
 del geo-11.txt
 del Source.url
 del 3DMigoto Loader.exe
-del PlayGTAV.bat
+del PlayGTAV.cmd
 
 del uninstall.bat
