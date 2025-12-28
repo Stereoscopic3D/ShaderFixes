@@ -1,0 +1,1 @@
+start "" "PlayGTAV.exe" -nobattleye %*

@@ -130,5 +130,7 @@ rmdir /s /q ShaderFixesDM
 del ReadMe.txt
 del geo-11.txt
 del Source.url
+del 3DMigoto Loader.exe
+del PlayGTAV.bat
 
 del uninstall.bat
