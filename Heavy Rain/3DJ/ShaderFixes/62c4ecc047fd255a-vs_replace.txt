@@ -1,0 +1,630 @@
+//HUD MAIN 1
+// ---- Created with 3Dmigoto v1.3.16 on Tue Jul 16 18:49:25 2019
+
+cbuffer ConstentValue : register(b0)
+{
+  float4x4 register0 : packoffset(c0);
+}
+
+
+
+
+
+// 3Dmigoto declarations
+#define cmp -
+Texture1D<float4> IniParams : register(t120);
+Texture2D<float4> StereoParams : register(t125);
+
+void main(
+  float4 v0 : POSITION0,
+  float4 v1 : COLOR0,
+  float2 v2 : TEXCOORD0,
+  out float4 o0 : SV_POSITION0,
+  out float4 o1 : COLOR0,
+  out float2 o2 : TEXCOORD0)
+{
+  float4 stereo = StereoParams.Load(0);
+float4 ini = IniParams.Load(0);
+
+//added
+  float4 r40,r41;
+
+float4 HUDDEPTH = IniParams.Load(int2(100,0));
+float4 MainMenuIndicator = IniParams.Load(int2(102,0));
+float4 tex_filter = IniParams.Load(int2(2,0));
+float4 texfilter2 = IniParams.Load(int2(50,0));
+float4 ThinkTrigger = IniParams.Load(int2(51,0));
+float4 interact = IniParams.Load(int2(52,0));
+
+
+float4 HelpTextFix1 = IniParams.Load(int2(56,0));
+float4 HelpTextFix2 = IniParams.Load(int2(65,0));
+float4 HelpTextFix3 = IniParams.Load(int2(58,0));
+float4 HelpTextFix4 = IniParams.Load(int2(55,0));
+float4 HelpTextFix5 = IniParams.Load(int2(66,0));
+float4 HelpTextFix6 = IniParams.Load(int2(68,0));
+float4 HelpTextFix7 = IniParams.Load(int2(61,0));
+float4 HelpTextFix70 = IniParams.Load(int2(70,0));
+float4 HelpTextFix71 = IniParams.Load(int2(71,0));
+float4 HelpTextFix72 = IniParams.Load(int2(72,0));
+float4 HelpTextFix73 = IniParams.Load(int2(73,0));
+float4 HelpTextFix74 = IniParams.Load(int2(74,0));
+float4 HelpTextFix67 = IniParams.Load(int2(67,0));
+float4 HelpTextFix75 = IniParams.Load(int2(75,0));
+float4 HelpTextFix76 = IniParams.Load(int2(76,0));
+float4 HelpTextFix78 = IniParams.Load(int2(78,0));
+float4 HelpTextFix77 = IniParams.Load(int2(77,0));
+float4 HelpTextFix59 = IniParams.Load(int2(59,0));
+
+float4 HelpTextIndicator = IniParams.Load(int2(55,0));
+
+float4 Menutoggled1 = IniParams.Load(int2(82,0));
+float4 Menutoggled2 = IniParams.Load(int2(83,0));
+float4 NumberKeyIndicator = IniParams.Load(int2(84,0));
+
+float4 NonTHinkKeyPress1 = IniParams.Load(int2(85,0));
+float4 NonTHinkKeyPress2 = IniParams.Load(int2(86,0));
+float4 RectExclude = IniParams.Load(int2(87,0));
+
+float4 TestFixMenu = IniParams.Load(int2(88,0));
+float4 AriInvest = IniParams.Load(int2(90,0));
+float4 EandRBPressDelay = IniParams.Load(int2(89,0));
+
+//arrow indicator
+float4 HelpTextFix62 = IniParams.Load(int2(62,0));
+float4 ThinkTriggerKeyPress = IniParams.Load(int2(79,0));
+
+float4 changedepthhud = IniParams.Load(int2(80,0));
+  o0.x = dot(v0.xyzw, register0._m00_m10_m20_m30);
+  o0.y = dot(v0.xyzw, register0._m01_m11_m21_m31);
+  o0.z = dot(v0.xyzw, register0._m02_m12_m22_m32);
+  o0.w = dot(v0.xyzw, register0._m03_m13_m23_m33);
+  
+
+  o1.xyzw = v1.xyzw;
+  o2.xy = v2.xy;
+
+
+//correct main menu 1
+if(texfilter2.x==0.0)
+{
+if(tex_filter.x==2.0 && MainMenuIndicator.x==1.0 && o0.y > -0.55)
+{
+o0.x+=stereo.x*(o0.w-stereo.y)*0.87;
+}
+
+if(tex_filter.x==2.0 && MainMenuIndicator.x==1.0 && o0.y < -0.55)
+{
+o0.x+=stereo.x*(o0.w-stereo.y)*0.595;
+}
+
+if(tex_filter.x==3.0 && MainMenuIndicator.x==1.0)
+{
+o0.x-=stereo.x*(o0.w-stereo.y)*0.15;
+}
+
+if(tex_filter.x==4.0 && MainMenuIndicator.x==1.0 && o0.y < -0.3)
+{
+o0.x-=stereo.x*(o0.w-stereo.y)*0.4;
+}
+}
+
+//correct main menu 2
+if(texfilter2.x==1.0)
+{
+if(tex_filter.x==2.0 && MainMenuIndicator.x==1.0 && o0.y > -0.55)
+{
+o0.x+=stereo.x*(o0.w-stereo.y)*0.70;
+}
+
+if(tex_filter.x==2.0 && MainMenuIndicator.x==1.0 && o0.y < -0.55)
+{
+o0.x+=stereo.x*(o0.w-stereo.y)*0.595;
+}
+
+if(tex_filter.x==3.0 && MainMenuIndicator.x==1.0)
+{
+o0.x-=stereo.x*(o0.w-stereo.y)*0.15;
+}
+
+if(tex_filter.x==4.0 && MainMenuIndicator.x==1.0 && o0.y < -0.3)
+{
+o0.x-=stereo.x*(o0.w-stereo.y)*0.4;
+}
+}
+
+
+//correct menu ingame
+if(tex_filter.x==2.0 && MainMenuIndicator.x==0.0)
+{
+o0.x+=stereo.x*(o0.w-stereo.y);
+}
+
+//correct main menu except mouse
+if(MainMenuIndicator.x==1.0 && tex_filter.x!=2.0)
+{
+o0.x+=stereo.x*(o0.w-stereo.y);
+}
+
+//correct main menu except mouse
+if(MainMenuIndicator.x==0.0 && tex_filter.x!=2.0)
+{
+o0.x+=stereo.x*(o0.w-stereo.y);
+}
+
+//correct main menu except mouse
+if(tex_filter.x==8.0 && ThinkTrigger.x==0.0)
+{
+o0.x-=stereo.x*(o0.w-stereo.y);
+}
+
+
+
+
+//correct interrupt rect
+if(tex_filter.x==8.0 && HelpTextFix3.x==1.0 && ThinkTrigger.x==0.0)
+{
+o0.x+=stereo.x*(o0.w-stereo.y)*2;
+}
+
+
+//correct interrupt rect
+if(tex_filter.x==8.0 && HelpTextFix3.x==0.0 && ThinkTrigger.x==0.0)
+{
+o0.x+=stereo.x*(o0.w-stereo.y);
+}
+
+
+//correct interrupt rect
+if(tex_filter.x==11.0 && HelpTextFix3.x==1.0)
+{
+o0.x+=stereo.x*(o0.w-stereo.y);
+}
+
+//correct interrupt rect
+if(tex_filter.x==9.0 && HelpTextFix3.x==0.0)
+{
+o0.x+=stereo.x*(o0.w-stereo.y);
+}
+
+
+//correct XB
+if(tex_filter.x==7.0)
+{
+o0.x-=stereo.x*(o0.w-stereo.y);
+}
+
+
+//correct XB
+if(tex_filter.x==9.0 && HelpTextFix3.x==1.0)
+{
+o0.x+=stereo.x*(o0.w-stereo.y);
+}
+
+if(tex_filter.x==9.0 && HelpTextFix1.x==0.0)
+{
+o0.x-=stereo.x*(o0.w-stereo.y);
+}
+
+if(tex_filter.x==10.0 && HelpTextFix1.x==1.0)
+{
+//o0.x-=stereo.x*(o0.w-stereo.y);
+}
+
+if(tex_filter.x==10.0 && HelpTextFix1.x==0.0)
+{
+o0.x-=stereo.x*(o0.w-stereo.y);
+}
+
+if(tex_filter.x==5.0 && HelpTextFix1.x==0.0 && HelpTextFix6.x==1.0)
+{
+o0.x-=stereo.x*(o0.w-stereo.y);
+}
+
+if(tex_filter.x==5.0 && HelpTextFix1.x==1.0 && HelpTextFix6.x==1.0)
+{
+//o0.x-=stereo.x*(o0.w-stereo.y);
+}
+
+//interact symbol wasd and xb if circle is arround
+if(tex_filter.x==6.0 && HelpTextFix70.x==1.0)
+{
+//o0.x-=stereo.x*(o0.w-stereo.y);
+}
+
+//interact symbol wasd and xb if helptext is used x 56 and 58 // 1 and 3 helptexfix, no circle arround
+if(tex_filter.x==6.0 && HelpTextFix70.x==0.0 && HelpTextFix1.x==1.0 && HelpTextFix3.x==1.0)
+{
+o0.x+=stereo.x*(o0.w-stereo.y);
+}
+
+//kills rectange iff help text is active -- solved
+//rectalnge kb if interact symbol is active and no circle and no help text and rectangel on
+if(tex_filter.x==9.0 && HelpTextFix70.x==0.0 && HelpTextFix1.x==0.0 && HelpTextFix3.x==0.0 && HelpTextFix7.x==1.0)
+{
+o0.x-=stereo.x*(o0.w-stereo.y);
+}
+
+//ok
+//rectalnge xb/kb if interact symbol is NOT active and no circle and help text is active
+if(tex_filter.x==9.0 && HelpTextFix72.x==1.0 && HelpTextFix7.x==1.0 && HelpTextFix3.x==0.0)
+{
+o0.x+=stereo.x*(o0.w-stereo.y);
+}
+
+//enable this will cure 3rd part playing with kids wase and xb
+//but kills circle - need check
+//but NOT if help text is activated
+//circle chek added with fix70 and working, need to check apperiance while playing with kids
+if(tex_filter.x==6.0 && HelpTextFix71.x==1.0 && HelpTextFix70.x==0.0)
+{
+o0.x+=stereo.x*(o0.w-stereo.y);
+}
+
+//try to correct wasd symbol if help text is active -- working, need to check prev game since startup
+if(tex_filter.x==6.0 && HelpTextFix71.x==1.0 && HelpTextFix1.x==1.0 && HelpTextFix3.x==1.0)
+{
+o0.x-=stereo.x*(o0.w-stereo.y);
+}
+
+
+//decide arrow active, help text active, correct wasd
+if(tex_filter.x==6.0 && HelpTextFix71.x==1.0 && HelpTextFix1.x==1.0 && HelpTextFix3.x==1.0 && HelpTextFix73.x==1.0)
+{
+o0.x-=stereo.x*(o0.w-stereo.y);
+}
+
+//correct rectangle if LSTICK is active
+if(tex_filter.x==9.0 && HelpTextFix74.x==1.0 && HelpTextFix3.x==1.0)
+{
+o0.x-=stereo.x*(o0.w-stereo.y);
+}
+
+//try correct wasd with rectangle no text active no circle wasd
+if(tex_filter.x==6.0 && HelpTextFix7.x==1.0 && HelpTextFix3.x==0.0 && HelpTextFix1.x==0.0 && HelpTextFix70.x==0.0)
+{
+//o0.x-=stereo.x*(o0.w-stereo.y);
+}
+
+//try correct rect with rectangle no text active no circle 2 rectangle
+//kills rect while lift up --- seems fixed
+if(tex_filter.x==9.0 && HelpTextFix7.x==1.0 && HelpTextFix3.x==0.0 && HelpTextFix1.x==0.0 && HelpTextFix70.x==0.0)
+{
+//o0.x-=stereo.x*(o0.w-stereo.y);
+}
+
+
+//kills lift up with arrow, rect, square adn interact
+if(HelpTextFix7.x==1.0 && HelpTextFix71.x==1.0 && HelpTextFix3.x==0.0 && HelpTextFix1.x==0.0 && HelpTextFix70.x==0.0)
+{
+o0.x-=stereo.x*(o0.w-stereo.y);
+}
+
+//correction atempt
+if(tex_filter.x==9.0 && HelpTextFix7.x==1.0 && HelpTextFix71.x==1.0 && HelpTextFix3.x==0.0 && HelpTextFix1.x==0.0 && HelpTextFix70.x==0.0)
+{
+o0.x+=stereo.x*(o0.w-stereo.y);
+}
+
+
+//correction atempt iof arrowe acrive
+if(tex_filter.x==9.0 && HelpTextFix7.x==1.0 && HelpTextFix71.x==1.0 && HelpTextFix3.x==0.0 && HelpTextFix1.x==0.0 && HelpTextFix70.x==0.0 && HelpTextFix5.x==1.0)
+{
+o0.x-=stereo.x*(o0.w-stereo.y);
+}
+//may add this also for FI 6
+
+
+//correction atempt
+if(tex_filter.x==6.0 && HelpTextFix7.x==1.0 && HelpTextFix71.x==1.0 && HelpTextFix3.x==0.0 && HelpTextFix1.x==0.0 && HelpTextFix70.x==0.0)
+{
+o0.x+=stereo.x*(o0.w-stereo.y);
+}
+
+//try correct rect with rectangle no text active no circle 2 rectangle
+//shake qr fridger correcrt
+if(HelpTextFix7.x==1.0 && HelpTextFix71.x==1.0 && HelpTextFix3.x==0.0 && HelpTextFix1.x==0.0 && HelpTextFix70.x==0.0 && HelpTextFix67.x==1.0)
+{
+o0.x+=stereo.x*(o0.w-stereo.y);
+}
+
+//test this if this will beake other things in prolog
+//seen @ start area from bad 
+//rectalnge xb/kb if interact symbol is NOT active and no circle and help NO text is active
+if(tex_filter.x==9.0 && HelpTextFix72.x==0.0 && HelpTextFix7.x==1.0)
+{
+o0.x+=stereo.x*(o0.w-stereo.y);
+}
+
+//interact symbol kb if interact symbol is active and no circle and no help text and rectangel on
+if(tex_filter.x==6.0 && HelpTextFix70.x==0.0 && HelpTextFix1.x==0.0 && HelpTextFix3.x==0.0 && HelpTextFix7.x==1.0)
+{
+o0.x-=stereo.x*(o0.w-stereo.y);
+}
+
+
+//rectalnge xb if interact symbol LS is active and no circle and no help text and rectangel on
+if(tex_filter.x==9.0 && HelpTextFix70.x==0.0 && HelpTextFix1.x==0.0 && HelpTextFix3.x==1.0 && HelpTextFix7.x==1.0)
+{
+o0.x-=stereo.x*(o0.w-stereo.y);
+}
+
+//////////////////////////w anr rectangle is not ok
+//fix attemp: make constantsv = 1 for wasd and rect and if nothing else active, apply fix
+//no circle, no arrow
+if(tex_filter.x==9.0 && HelpTextFix4.x==1.0 && HelpTextFix75.x==1.0 && HelpTextFix76.x==1.0 && HelpTextFix70.x==0.0 && HelpTextFix62.x==0.0 && HelpTextFix77.x==0.0 && HelpTextFix73.x==0.0)
+{
+o0.x-=stereo.x*(o0.w-stereo.y);
+}
+
+//carry with empty mouse symbol
+if(tex_filter.x==9.0 && HelpTextFix77.x==1.0)
+{
+o0.x-=stereo.x*(o0.w-stereo.y);
+}
+
+//HT1 hinzugefügt
+if(tex_filter.x==9.0 && HelpTextFix1.x==0.0 && HelpTextFix3.x==1.0 && HelpTextFix59.x==1.0 && HelpTextFix75.x==1.0 && HelpTextFix76.x==0.0 && HelpTextFix4.x==1.0 && HelpTextFix78.x==1.0)
+{
+o0.x-=stereo.x*(o0.w-stereo.y);
+}
+
+if(tex_filter.x==12.0 && HelpTextFix3.x==1.0 && HelpTextFix59.x==1.0 && HelpTextFix75.x==1.0 && HelpTextFix76.x==0.0 && HelpTextFix4.x==1.0 && HelpTextFix78.x==1.0)
+{
+o0.x+=stereo.x*(o0.w-stereo.y);
+}
+
+//arrow cb over rectangle for show moving - if LSTICKSYMBOL is active
+if(tex_filter.x==12.0 && HelpTextFix78.x==1.0 && HelpTextFix1.x==0.0 && HelpTextFix3.x==1.0 && HelpTextFix74.x==1.0)
+{
+o0.x-=stereo.x*(o0.w-stereo.y);
+}
+
+//arrow cb over rectangle for show moving - if RSTICK is active - F3 from 1 to 0 fixes mirror shake, F4 = off at mirror, on while walk
+if(tex_filter.x==12.0 && HelpTextFix78.x==1.0 && HelpTextFix1.x==0.0 && HelpTextFix3.x==0.0 && HelpTextFix74.x==0.0 && HelpTextFix4.x==0.0)
+{
+o0.x-=stereo.x*(o0.w-stereo.y);
+}
+
+//arrow cb over rectangle for show moving - if RSTICK is active - F3 from 0 to 1 fixes walk shake F4 = off at mirror, on while walk
+if(tex_filter.x==12.0 && HelpTextFix78.x==1.0 && HelpTextFix1.x==0.0 && HelpTextFix3.x==1.0 && HelpTextFix74.x==0.0 && HelpTextFix4.x==1.0)
+{
+o0.x-=stereo.x*(o0.w-stereo.y);
+}
+
+//correct mouse button with carry arrow
+if(tex_filter.x==6.0 && HelpTextFix4.x==0.0 && HelpTextFix75.x==1.0 && HelpTextFix76.x==0.0 && HelpTextFix70.x==0.0 && HelpTextFix62.x==1.0 && HelpTextFix77.x==0.0 && HelpTextFix73.x==0.0)
+{
+o0.x+=stereo.x*(o0.w-stereo.y);
+}
+
+//correct carry w
+if(tex_filter.x==6.0 && HelpTextFix4.x==1.0 && HelpTextFix75.x==1.0 && HelpTextFix76.x==1.0 && HelpTextFix70.x==0.0 && HelpTextFix62.x==0.0 && HelpTextFix77.x==0.0 && HelpTextFix73.x==0.0)
+{
+o0.x-=stereo.x*(o0.w-stereo.y);
+}
+
+//wasd and rect -- correct wasd - no circle
+if(tex_filter.x==6.0 && HelpTextFix71.x==1.0 && HelpTextFix1.x==0.0 && HelpTextFix3.x==0.0 && HelpTextFix7.x==1.0 && HelpTextFix70.x==0.0)
+{
+  //disable correction is fixin lift uop
+//o0.x-=stereo.x*(o0.w-stereo.y);
+}
+
+//correct if no arrow actice
+//wasd and rect -- correct rect - no circle
+//disable correction is fixin lift uop
+if(tex_filter.x==9.0 && HelpTextFix71.x==1.0 && HelpTextFix1.x==0.0 && HelpTextFix3.x==0.0 && HelpTextFix7.x==1.0 && HelpTextFix70.x==0.0 && HelpTextFix67.x==0.0)
+{
+//o0.x-=stereo.x*(o0.w-stereo.y);
+}
+
+//correct if arrow actice
+//wasd and rect -- correct rect - no circle
+if(tex_filter.x==9.0 && HelpTextFix71.x==1.0 && HelpTextFix1.x==0.0 && HelpTextFix3.x==0.0 && HelpTextFix7.x==1.0 && HelpTextFix70.x==0.0 && HelpTextFix67.x==1.0)
+{
+o0.x-=stereo.x*(o0.w-stereo.y);
+}
+
+//correct others
+if(interact.x==1.0)
+{
+o0.x-=stereo.x*(o0.w-stereo.y);
+}
+
+//correctincorrect depth hud
+if(changedepthhud.x==1.0)
+{
+o0.x-=stereo.x*(o0.w-stereo.y);
+}
+
+//correct some help text 1
+if(HelpTextFix1.x==1.0 && HelpTextFix1.x==1.0)
+{
+o0.x-=stereo.x*(o0.w-stereo.y);
+}
+
+
+
+//new with fix 2.0 - Losti - 29.12.2019
+//menu and think symbol text poput calculation on convergence dependency
+r40.x = -194.13587269384900000000*stereo.y*stereo.y*stereo.y*stereo.y*stereo.y + 416.83503637585100000000*stereo.y*stereo.y*stereo.y*stereo.y - 339.00633203050800000000*stereo.y*stereo.y*stereo.y + 126.16590613000800000000*stereo.y*stereo.y - 21.80293574718580000000*stereo.y + 2.71901338791934000000;
+r40.y = -6249.99999999994000000000*stereo.y*stereo.y + 11674.99999999990000000000*stereo.y - 5457.99999999995000000000;
+r40.z = 390625.00000160900000000000*stereo.y*stereo.y*stereo.y*stereo.y - 1728587.96296988000000000000*stereo.y*stereo.y*stereo.y + 2868142.36112225000000000000*stereo.y*stereo.y - 2114871.56085453000000000000*stereo.y + 584749.99603388300000000000;
+r40.w = -9.61403850806528000000*stereo.y*stereo.y*stereo.y*stereo.y*stereo.y + 90.10841875436450000000*stereo.y*stereo.y*stereo.y*stereo.y - 336.26881005563900000000*stereo.y*stereo.y*stereo.y + 625.55076013527400000000*stereo.y*stereo.y - 581.79096975000100000000*stereo.y + 219.90148507535400000000;
+r41.x = -0.01153456789120360000*stereo.y*stereo.y*stereo.y*stereo.y*stereo.y + 0.22567464721377100000*stereo.y*stereo.y*stereo.y*stereo.y - 1.73995709924094000000*stereo.y*stereo.y*stereo.y + 6.61904301834121000000*stereo.y*stereo.y - 12.52104119625490000000*stereo.y + 11.73916254121680000000;
+
+//think thinkbutton presses popout fix
+if(stereo.y<=0.922 && MainMenuIndicator.x==0.0 && ThinkTriggerKeyPress.x == 1.0)
+o0.x-=stereo.x*(o0.w-stereo.y)*0.5*r40.x;
+if(stereo.y>0.922 && stereo.y<=0.99 && MainMenuIndicator.x==0.0 && ThinkTriggerKeyPress.x == 1.0)
+o0.x-=stereo.x*(o0.w-stereo.y)*0.5*r40.y;
+if(stereo.y>0.99 && stereo.y<=1.01 && MainMenuIndicator.x==0.0 && ThinkTriggerKeyPress.x == 1.0)
+o0.x-=stereo.x*(o0.w-stereo.y)*0.5*-120.0;
+if(stereo.y>=1.00 && stereo.y<=1.145 && MainMenuIndicator.x==0.0 && ThinkTriggerKeyPress.x == 1.0)
+o0.x-=stereo.x*(o0.w-stereo.y)*0.5*r40.z;
+if(stereo.y>1.145 && stereo.y<=2.25 && MainMenuIndicator.x==0.0 && ThinkTriggerKeyPress.x == 1.0)
+o0.x-=stereo.x*(o0.w-stereo.y)*0.5*r40.w;
+if(stereo.y>2.25 && stereo.y<5.20 && MainMenuIndicator.x==0.0 && ThinkTriggerKeyPress.x == 1.0)
+o0.x-=stereo.x*(o0.w-stereo.y)*0.5*r40.x;
+if(stereo.y>=5.20 && MainMenuIndicator.x==0.0 && ThinkTriggerKeyPress.x == 1.0)
+o0.x-=stereo.x*(o0.w-stereo.y);
+//think thinkbutton presses popout fix
+
+//ingame menu fix
+if(stereo.y<=0.922 && Menutoggled2.x == 1.0 && Menutoggled1.x == 1.0 && MainMenuIndicator.x==0.0 && ThinkTriggerKeyPress.x == 0.0 && TestFixMenu.x==0.0)
+o0.x-=stereo.x*(o0.w-stereo.y)*0.5*r40.x;
+if(stereo.y>0.922 && stereo.y<=0.99 && Menutoggled2.x == 1.0 && Menutoggled1.x == 1.0 && MainMenuIndicator.x==0.0 && ThinkTriggerKeyPress.x == 0.0 && TestFixMenu.x==0.0)
+o0.x-=stereo.x*(o0.w-stereo.y)*0.5*r40.y;
+if(stereo.y>0.99 && stereo.y<=1.01 && Menutoggled2.x == 1.0 && Menutoggled1.x == 1.0 && MainMenuIndicator.x==0.0 && ThinkTriggerKeyPress.x == 0.0 && TestFixMenu.x==0.0)
+o0.x-=stereo.x*(o0.w-stereo.y)*0.5*-120.0;
+if(stereo.y>=1.00 && stereo.y<=1.145 && Menutoggled2.x == 1.0 && Menutoggled1.x == 1.0 && MainMenuIndicator.x==0.0 && ThinkTriggerKeyPress.x == 0.0 && TestFixMenu.x==0.0)
+o0.x-=stereo.x*(o0.w-stereo.y)*0.5*r40.z;
+if(stereo.y>1.145 && stereo.y<=2.25 && Menutoggled2.x == 1.0 && Menutoggled1.x == 1.0 && MainMenuIndicator.x==0.0 && ThinkTriggerKeyPress.x == 0.0 && TestFixMenu.x==0.0)
+o0.x-=stereo.x*(o0.w-stereo.y)*0.5*r40.w;
+if(stereo.y>2.25 && stereo.y<5.20 && Menutoggled2.x == 1.0 && Menutoggled1.x == 1.0 && MainMenuIndicator.x==0.0 && ThinkTriggerKeyPress.x == 0.0 && TestFixMenu.x==0.0)
+o0.x-=stereo.x*(o0.w-stereo.y)*0.5*r41.x;
+if(stereo.y>=5.20 && Menutoggled2.x == 1.0 && Menutoggled1.x == 1.0 && MainMenuIndicator.x==0.0 && ThinkTriggerKeyPress.x == 0.0 && TestFixMenu.x==0.0)
+o0.x-=stereo.x*(o0.w-stereo.y);
+//ingame menu fix
+
+//think no thinkbutton presses popout fix
+if(stereo.y<=0.922 && MainMenuIndicator.x==0.0 && NumberKeyIndicator.x == 1.0 && ThinkTriggerKeyPress.x == 0.0 && NonTHinkKeyPress2.x == 1.0 && NonTHinkKeyPress1.x == 1.0 && HelpTextIndicator.x == 0.0 && TestFixMenu.x==0.0)
+o0.x-=stereo.x*(o0.w-stereo.y)*0.5*r40.x;
+if(stereo.y>0.922 && stereo.y<=0.99 && MainMenuIndicator.x==0.0 && NumberKeyIndicator.x == 1.0 && ThinkTriggerKeyPress.x == 0.0 && NonTHinkKeyPress2.x == 1.0 && NonTHinkKeyPress1.x == 1.0 && HelpTextIndicator.x == 0.0 && TestFixMenu.x==0.0)
+o0.x-=stereo.x*(o0.w-stereo.y)*0.5*r40.y;
+if(stereo.y>0.99 && stereo.y<=1.01 && MainMenuIndicator.x==0.0 && NumberKeyIndicator.x == 1.0 && ThinkTriggerKeyPress.x == 0.0 && NonTHinkKeyPress2.x == 1.0 && NonTHinkKeyPress1.x == 1.0 && HelpTextIndicator.x == 0.0 && TestFixMenu.x==0.0)
+o0.x-=stereo.x*(o0.w-stereo.y)*0.5*-120.0;
+if(stereo.y>=1.00 && stereo.y<=1.145 && MainMenuIndicator.x==0.0 && NumberKeyIndicator.x == 1.0 && ThinkTriggerKeyPress.x == 0.0 && NonTHinkKeyPress2.x == 1.0 && NonTHinkKeyPress1.x == 1.0 && HelpTextIndicator.x == 0.0 && TestFixMenu.x==0.0)
+o0.x-=stereo.x*(o0.w-stereo.y)*0.5*r40.z;
+if(stereo.y>1.145 && stereo.y<=2.25 && MainMenuIndicator.x==0.0 && NumberKeyIndicator.x == 1.0 && ThinkTriggerKeyPress.x == 0.0 && NonTHinkKeyPress2.x == 1.0 && NonTHinkKeyPress1.x == 1.0 && HelpTextIndicator.x == 0.0 && TestFixMenu.x==0.0)
+o0.x-=stereo.x*(o0.w-stereo.y)*0.5*r40.w;
+if(stereo.y>2.25 && stereo.y<5.20 && MainMenuIndicator.x==0.0 && NumberKeyIndicator.x == 1.0 && ThinkTriggerKeyPress.x == 0.0 && NonTHinkKeyPress2.x == 1.0 && NonTHinkKeyPress1.x == 1.0 && HelpTextIndicator.x == 0.0 && TestFixMenu.x==0.0)
+o0.x-=stereo.x*(o0.w-stereo.y)*0.5*r41.x;
+if(stereo.y>=5.20 && MainMenuIndicator.x==0.0 && NumberKeyIndicator.x == 1.0 && ThinkTriggerKeyPress.x == 0.0 && NonTHinkKeyPress2.x == 1.0 && NonTHinkKeyPress1.x == 1.0 && HelpTextIndicator.x == 0.0 && TestFixMenu.x==0.0)
+o0.x-=stereo.x*(o0.w-stereo.y);
+//think no thinkbutton presses popout fix
+
+//think no thinkbutton presses popout fix interact
+if(stereo.y<=0.922 && MainMenuIndicator.x==0.0 && NumberKeyIndicator.x == 0.0 && ThinkTriggerKeyPress.x == 0.0 && NonTHinkKeyPress2.x == 1.0 && NonTHinkKeyPress1.x == 1.0 && HelpTextIndicator.x == 0.0 && TestFixMenu.x==0.0)
+o0.x-=stereo.x*(o0.w-stereo.y)*0.5*r40.x;
+if(stereo.y>0.922 && stereo.y<=0.99 && MainMenuIndicator.x==0.0 && NumberKeyIndicator.x == 0.0 && ThinkTriggerKeyPress.x == 0.0 && NonTHinkKeyPress2.x == 1.0 && NonTHinkKeyPress1.x == 1.0 && HelpTextIndicator.x == 0.0 && TestFixMenu.x==0.0)
+o0.x-=stereo.x*(o0.w-stereo.y)*0.5*r40.y;
+if(stereo.y>0.99 && stereo.y<=1.01 && MainMenuIndicator.x==0.0 && NumberKeyIndicator.x == 0.0 && ThinkTriggerKeyPress.x == 0.0 && NonTHinkKeyPress2.x == 1.0 && NonTHinkKeyPress1.x == 1.0 && HelpTextIndicator.x == 0.0 && TestFixMenu.x==0.0)
+o0.x-=stereo.x*(o0.w-stereo.y)*0.5*-120.0;
+if(stereo.y>=1.00 && stereo.y<=1.145 && MainMenuIndicator.x==0.0 && NumberKeyIndicator.x == 0.0 && ThinkTriggerKeyPress.x == 0.0 && NonTHinkKeyPress2.x == 1.0 && NonTHinkKeyPress1.x == 1.0 && HelpTextIndicator.x == 0.0 && TestFixMenu.x==0.0)
+o0.x-=stereo.x*(o0.w-stereo.y)*0.5*r40.z;
+if(stereo.y>1.145 && stereo.y<=2.25 && MainMenuIndicator.x==0.0 && NumberKeyIndicator.x == 0.0 && ThinkTriggerKeyPress.x == 0.0 && NonTHinkKeyPress2.x == 1.0 && NonTHinkKeyPress1.x == 1.0 && HelpTextIndicator.x == 0.0 && TestFixMenu.x==0.0)
+o0.x-=stereo.x*(o0.w-stereo.y)*0.5*r40.w;
+if(stereo.y>2.25 && stereo.y<5.20 && MainMenuIndicator.x==0.0 && NumberKeyIndicator.x == 0.0 && ThinkTriggerKeyPress.x == 0.0 && NonTHinkKeyPress2.x == 1.0 && NonTHinkKeyPress1.x == 1.0 && HelpTextIndicator.x == 0.0 && TestFixMenu.x==0.0)
+o0.x-=stereo.x*(o0.w-stereo.y)*0.5*r41.x;
+if(stereo.y>=5.20 && MainMenuIndicator.x==0.0 && NumberKeyIndicator.x == 0.0 && ThinkTriggerKeyPress.x == 0.0 && NonTHinkKeyPress2.x == 1.0 && NonTHinkKeyPress1.x == 1.0 && HelpTextIndicator.x == 0.0 && TestFixMenu.x==0.0)
+o0.x-=stereo.x*(o0.w-stereo.y);
+//think no thinkbutton presses popout fix interact
+//new with fix 2.0 - Losti - 29.12.2019
+
+//fix ARI
+if(stereo.y<=0.922 && tex_filter.x == 22.0 && ThinkTriggerKeyPress.x == 0.0 && EandRBPressDelay.x==0.0)
+o0.x-=stereo.x*(o0.w-stereo.y)*0.5*r40.x;
+if(stereo.y>0.922 && stereo.y<=0.99 && tex_filter.x == 22.0 && ThinkTriggerKeyPress.x == 0.0 && EandRBPressDelay.x==0.0)
+o0.x-=stereo.x*(o0.w-stereo.y)*0.5*r40.y;
+if(stereo.y>0.99 && stereo.y<=1.01 && tex_filter.x == 22.0 && ThinkTriggerKeyPress.x == 0.0 && EandRBPressDelay.x==0.0)
+o0.x-=stereo.x*(o0.w-stereo.y)*0.5*-120.0;
+if(stereo.y>=1.00 && stereo.y<=1.145 && tex_filter.x == 22.0 && ThinkTriggerKeyPress.x == 0.0 && EandRBPressDelay.x==0.0)
+o0.x-=stereo.x*(o0.w-stereo.y)*0.5*r40.z;
+if(stereo.y>1.145 && stereo.y<=2.25 && tex_filter.x == 22.0 && ThinkTriggerKeyPress.x == 0.0 && EandRBPressDelay.x==0.0)
+o0.x-=stereo.x*(o0.w-stereo.y)*0.5*r40.w;
+if(stereo.y>2.25 && stereo.y<5.20 && tex_filter.x == 22.0 && ThinkTriggerKeyPress.x == 0.0 && EandRBPressDelay.x==0.0)
+o0.x-=stereo.x*(o0.w-stereo.y)*0.5*r41.x;
+if(stereo.y>=5.20 && tex_filter.x == 22.0 &&EandRBPressDelay.x==0.0)
+o0.x-=stereo.x*(o0.w-stereo.y);
+
+if(stereo.y<=0.922 && tex_filter.x == 22.0 && ThinkTriggerKeyPress.x == 0.0 && EandRBPressDelay.x==1.0)
+o0.x-=stereo.x*(o0.w-stereo.y)*0.5*r40.x;
+if(stereo.y>0.922 && stereo.y<=0.99 && tex_filter.x == 22.0 && ThinkTriggerKeyPress.x == 0.0 && EandRBPressDelay.x==1.0)
+o0.x-=stereo.x*(o0.w-stereo.y)*0.5*r40.y;
+if(stereo.y>0.99 && stereo.y<=1.01 && tex_filter.x == 22.0 && ThinkTriggerKeyPress.x == 0.0 && EandRBPressDelay.x==1.0)
+o0.x-=stereo.x*(o0.w-stereo.y)*0.5*-120.0;
+if(stereo.y>=1.00 && stereo.y<=1.145 && tex_filter.x == 22.0 && ThinkTriggerKeyPress.x == 0.0 && EandRBPressDelay.x==1.0)
+o0.x-=stereo.x*(o0.w-stereo.y)*0.5*r40.z;
+if(stereo.y>1.145 && stereo.y<=2.25 && tex_filter.x == 22.0 && ThinkTriggerKeyPress.x == 0.0 && EandRBPressDelay.x==1.0)
+o0.x-=stereo.x*(o0.w-stereo.y)*0.5*r40.w;
+if(stereo.y>2.25 && stereo.y<5.20 && tex_filter.x == 22.0 && ThinkTriggerKeyPress.x == 0.0 && EandRBPressDelay.x==1.0)
+o0.x-=stereo.x*(o0.w-stereo.y)*0.5*r41.x;
+if(stereo.y>=5.20 && tex_filter.x == 22.0 &&EandRBPressDelay.x==0.0)
+o0.x-=stereo.x*(o0.w-stereo.y);
+
+
+if(tex_filter.x==23.0)
+{
+o0.x-=stereo.x*(o0.w-stereo.y);
+}
+
+//fix ARI
+
+
+
+  return;
+}
+
+/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+//
+// Generated by Microsoft (R) HLSL Shader Compiler 6.3.9600.16384
+//
+//   using 3Dmigoto v1.3.16 on Tue Jul 16 18:49:25 2019
+//
+//
+// Buffer Definitions:
+//
+// cbuffer ConstentValue
+// {
+//
+//   float4x4 register0;                // Offset:    0 Size:    64
+//
+// }
+//
+//
+// Resource Bindings:
+//
+// Name                                 Type  Format         Dim Slot Elements
+// ------------------------------ ---------- ------- ----------- ---- --------
+// ConstentValue                     cbuffer      NA          NA    0        1
+//
+//
+//
+// Input signature:
+//
+// Name                 Index   Mask Register SysValue  Format   Used
+// -------------------- ----- ------ -------- -------- ------- ------
+// POSITION                 0   xyzw        0     NONE   float   xyzw
+// COLOR                    0   xyzw        1     NONE   float   xyzw
+// TEXCOORD                 0   xy          2     NONE   float   xy
+//
+//
+// Output signature:
+//
+// Name                 Index   Mask Register SysValue  Format   Used
+// -------------------- ----- ------ -------- -------- ------- ------
+// SV_POSITION              0   xyzw        0      POS   float   xyzw
+// COLOR                    0   xyzw        1     NONE   float   xyzw
+// TEXCOORD                 0   xy          2     NONE   float   xy
+//
+vs_5_0
+dcl_globalFlags refactoringAllowed
+dcl_constantbuffer cb0[4], immediateIndexed
+dcl_input v0.xyzw
+dcl_input v1.xyzw
+dcl_input v2.xy
+dcl_output_siv o0.xyzw, position
+dcl_output o1.xyzw
+dcl_output o2.xy
+dp4 o0.x, v0.xyzw, cb0[0].xyzw
+dp4 o0.y, v0.xyzw, cb0[1].xyzw
+dp4 o0.z, v0.xyzw, cb0[2].xyzw
+dp4 o0.w, v0.xyzw, cb0[3].xyzw
+mov o1.xyzw, v1.xyzw
+mov o2.xy, v2.xyxx
+ret
+// Approximately 7 instruction slots used
+
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
